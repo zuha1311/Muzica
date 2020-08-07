@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.spotified.Activities.Genre"
+    android:background="@drawable/bg_gradient">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Coming Soon in the next version!"
+        android:textColor="#b1a9a9"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textStyle="bold"/>
+
+
+</RelativeLayout>

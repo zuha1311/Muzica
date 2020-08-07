@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.spotified.Activities.Settings"
+    android:background="@drawable/bg_gradient"
+    android:id="@+id/settings_rel">
+
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#b1a9a9"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:text="Shake to Change"
+        android:layout_marginRight="20dp"
+        android:textSize="20sp"/>
+</RelativeLayout>

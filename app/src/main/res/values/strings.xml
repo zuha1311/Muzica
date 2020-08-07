@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Múzica</string>
+    <string name="motto">Spotified</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="help">I hope you enjoyed the experience. Apologies for any inconvenience caused. There are bugs that are to be fixed. The developer is working on them day and night. Be Kind!</string>
+</resources>

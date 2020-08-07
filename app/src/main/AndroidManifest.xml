@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.spotified">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:targetApi="q">
+        <activity android:name=".Activities.VisualiserActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" ></activity>
+        <activity android:name=".Activities.ArtistDetails" />
+        <activity android:name=".Activities.AlbumDetails" />
+        <activity android:name=".Activities.About" />
+        <activity
+            android:name=".Activities.PlayerActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".Activities.TabActivity" />
+        <activity android:name="Fragments.SongPlaying" />
+        <activity android:name=".Activities.Help" />
+        <activity android:name=".Activities.Settings" />
+        <activity android:name=".Activities.Genre" />
+        <activity android:name=".Activities.Playlist" />
+        <activity android:name=".Activities.favourites" />
+        <activity
+            android:name=".Activities.MenuActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Activities.MainScreen"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Activities.Splash"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <receiver android:name="Services.NotificationActionReceiver" />
+
+        <service android:name="Services.onClearFromRecentService" />
+    </application>
+
+</manifest>

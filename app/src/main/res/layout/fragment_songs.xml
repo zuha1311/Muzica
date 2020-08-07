@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Fragments.SongsFragment"
+    android:background="@drawable/songs_bg"
+    android:id="@+id/songs_fragment"
+    >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView1" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/hiddenBarMainScreen"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/card_bg">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playPauseButton"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="31dp"
+            android:background="@drawable/ic_baseline_pause_24"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/defaultMusic"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/logo1"
+            android:layout_marginLeft="13dp"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Now Playing"
+            android:id="@+id/nowPlaying"
+            android:layout_toRightOf="@+id/defaultMusic"
+            android:textColor="#bdbdbd"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="11dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/songTitleMainScreen"
+            android:layout_below="@+id/nowPlaying"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:maxWidth="160dp"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:text="..."
+            android:layout_alignLeft="@+id/nowPlaying"
+            android:layout_alignStart="@+id/nowPlaying"
+            android:textColor="#ffffff"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
