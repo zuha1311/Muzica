@@ -24,6 +24,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
+import Adapter.MusicAdpater;
 import Database.FavDB;
 import Fragments.Album1Fragment;
 import Fragments.ArtistsFragment;
@@ -32,11 +33,13 @@ import Fragments.MusicFiles;
 import Fragments.SongsFragment;
 
 import static Adapter.ArtistsAdapter.artistFiles;
+import static Adapter.MusicAdpater.mFiles;
 
 public class TabActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     public static ArrayList<MusicFiles> musicFiles;
-
+    private Context context;
+    int position = 1;
     public static FavDB favDB;
     public static ArrayList<MusicFiles> albums = new ArrayList<>();
     public static ArrayList<MusicFiles> artists = new ArrayList<>();
@@ -86,8 +89,6 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
             viewPagerAdapter.addFragments(new ArtistsFragment(),"Artists");
 
        }
-
-
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -95,12 +96,9 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
     private void execute(){
 
         musicFiles = getAllAudio(this);
-
         initViewPager();
 
     }
-
-
 
     public static class ViewPagerAdapter extends FragmentPagerAdapter {
         private ArrayList<Fragment> fragments;
@@ -168,8 +166,6 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
                 MediaStore.Audio.Media.ARTIST,
                 MediaStore.Audio.Media._ID,
 
-
-
         };
         Cursor cursor = context.getContentResolver().query(uri,projection,null,null,order);
 
@@ -236,7 +232,7 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
                 myFiles.add(songMusic);
             }
         }
-        for (MusicFiles songMusic :artistFiles)
+        for (MusicFiles songMusic : artistFiles)
         {
             if(songMusic.getArtist().toLowerCase().contains(userInput))
             {
@@ -270,4 +266,6 @@ public class TabActivity extends AppCompatActivity implements SearchView.OnQuery
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

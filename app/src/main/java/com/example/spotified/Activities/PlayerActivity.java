@@ -66,11 +66,12 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
     ImageView cover_art, nextBtn, prevBtn, backBtn, shuffleBtn, repeatBtn,menuBtn,favBtn,visBtn;
     FloatingActionButton playPauseButton;
     SeekBar seekbar;
-
+    SensorManager sensorManager;
+    SensorEventListener sensorEventListener;
     Float mAcceleration = 0f;
     Float mAccelerationCurrent = 0f;
     Float mAccelerationLast = 0f;
-
+    String SETTINGS_PREF = "Shake Feature";
     int position = -1;
     public static ArrayList<MusicFiles> listSongs = new ArrayList<>();
     public static ArrayList<MusicFiles> listFavsongs = new ArrayList<>();
@@ -98,7 +99,8 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         visBtn = findViewById(R.id.vis_btn);
         initViews();
         getIntentMethod();
-
+        sensorManager = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
+        bindShakeListener();
         song_name.setText(listSongs.get(position).getTitle());
         artist_name.setText(listSongs.get(position).getArtist());
         mediaPlayer.setOnCompletionListener(this);
@@ -187,6 +189,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent (getApplicationContext(),TabActivity.class);
+                intent.putExtra("sender", "musicFiles");
                 startActivity(intent);
             }
         });
@@ -202,7 +205,39 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
 
     }
 
+    private void bindShakeListener() {
+        sensorEventListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent sensorEvent) {
+                float x = sensorEvent.values[0];
+                float y = sensorEvent.values[1];
+                float z = sensorEvent.values[2];
 
+                mAccelerationCurrent = mAccelerationLast;
+                Double sq = Math.sqrt(x*x + y*y + z*z);
+                mAccelerationCurrent = sq.floatValue();
+                float delta = mAccelerationCurrent - mAccelerationLast;
+                mAcceleration = mAcceleration * 0.9f + delta;
+
+                if(mAcceleration > 10)
+                {
+                    SharedPreferences sharedPreferences = getSharedPreferences(SETTINGS_PREF,Context.MODE_PRIVATE);
+                    Boolean isAllowed = sharedPreferences.getBoolean("feature",false);
+                    if(isAllowed)
+                    {
+                        nextButtonClicked();
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int i) {
+
+            }
+        };
+    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -246,7 +281,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
 
 
          MusicAdpater.createNotification(PlayerActivity.this,mFiles.get(1),R.drawable.ic_baseline_pause_24,position,mFiles.size()-1);
-
+         sensorManager.registerListener(sensorEventListener,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL);
 
 
     }
@@ -748,6 +783,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
     @Override
     protected void onPause() {
         super.onPause();
+        sensorManager.unregisterListener(sensorEventListener);
 
     }
 

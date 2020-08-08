@@ -26,7 +26,14 @@ public class Settings extends AppCompatActivity {
         Boolean isAllowed = sharedPreferences.getBoolean("feature",false);
         sSwitch.setChecked(isAllowed);
 
-
+       if(isAllowed)
+       {
+           sSwitch.setChecked(true);
+       }
+       else
+       {
+           sSwitch.setChecked(false);
+       }
         sSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

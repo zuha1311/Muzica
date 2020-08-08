@@ -6,5 +6,6 @@
     <string name="start">GOT IT</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about">Zuha Khan is one of the most promising students of her batch who performed exceptionally well in academics as well as in the developing side of the computer world. She developed a particular interest in the field of app development and is now working on a variety of projects while completing her final year in Bachelors in Computer Applications.</string>
     <string name="help">I hope you enjoyed the experience. Apologies for any inconvenience caused. There are bugs that are to be fixed. The developer is working on them day and night. Be Kind!</string>
 </resources>
